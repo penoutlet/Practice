@@ -1,0 +1,121 @@
+<DOCTYPE! html>
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+
+<div id="game">
+
+<p>Press r, p or s to begin playing. </p>
+
+</div>
+<script>
+    // Whenever a key is pressed, alert "pressed a button".
+
+
+// REMEMBER TO STAY ORGANIZED
+		
+    var rps = ["r","p","s"];
+   var wins = 0;
+   var losses = 0;
+   var ties = 0 ;
+  // When a key is pressed, this page-long function will be performed.
+    
+   document.onkeyup = function()
+
+
+   {
+
+   	// when user presses a key, that key's code will be recorded as a string and stored in the variable userguess. This will happen regardless of it's capitolization.
+
+     var userguess = String.fromCharCode(event.keyCode).toLowerCase();
+
+
+      // logging the userguess is useful in troubleshooting.
+
+		      		console.log(userguess);
+      
+     // Math.floor rounds down the product of Math.random() and rps.length. 
+
+    var computerguess = rps[Math.floor(Math.random()
+      *rps.length)];
+	//			
+
+		// logging the computerguess is useful too
+
+    				console.log(computerguess);
+
+
+// if user's guess is r (or ||) p (or ||) s, the following code will run... || is the word "or" in javascript. == is the phrase equal to.
+
+ if (userguess == "r" || userguess =="p" || userguess =="s") {
+
+// the following if statements set the rules for the game.
+
+		// Ties
+
+  		if ((userguess == computerguess)) {
+  			ties++;
+  		
+  		}
+  								
+ 		// Wins						
+ 	
+		if ((userguess =="r") && (computerguess=="s")){
+			wins++;
+
+  		 }
+		if ((userguess =="p") && (computerguess=="r")){
+			wins++;
+  		
+  		 }
+		
+		if ((userguess =="s") && (computerguess=="p")){
+			wins++;
+  		
+  		 }
+	
+		// Losses
+
+  		if ((userguess =="r") && (computerguess=="p")){
+  			losses++;
+			
+		}
+
+		if ((userguess =="p") && (computerguess=="s")){
+			losses++;
+
+			}
+
+   		if ((userguess =="s") && (computerguess=="r")){
+			losses++;
+
+			}
+
+}	
+ 
+// if the user does not press r p or s, as stated in the opening "if" statement with the || (or) operators, an alert will appear.
+  
+ else { alert("Please choose either R, P, or S")}
+
+// saves text in a variable called html. 
+var html = "<p>Press r, p or s to start playing/p>" +
+			"<p>wins: " + wins + "<p>" +
+   			"<p>losses: " + losses + "</p>" +
+   			"<p>ties: "	+ ties + "</p>";
+
+
+
+// this updates the html in the opening div (id=game) in real time, to keep track of wins, losses, and ties. 
+   				document.querySelector('#game').innerHTML = html;
+
+
+}
+
+
+   </script>
+</body>
+</html>
+
